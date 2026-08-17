@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  全ページ共通の「枠」（テンプレート）。
+  {{…}} の部分に build.py が各ページの中身を差し込んで docs/ に書き出します。
+  ここを1か所直せば、全ページのヘッダー・フッターが一度に変わります。
+-->
+<title>お問い合わせ｜音感トレーニング</title>
+<meta name="description" content="音感トレーニングについてのご質問・ご感想はこちらから。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="お問い合わせ">
+<meta property="og:description" content="音感トレーニングについてのご質問・ご感想はこちらから。">
+<meta property="og:site_name" content="音感トレーニング">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://trust6236.github.io/onkan-lp/contact.html">
+<meta property="og:image" content="https://trust6236.github.io/onkan-lp/images/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://trust6236.github.io/onkan-lp/contact.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,650&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ 共通ヘッダー（サイト名＋ページ一覧） ============ -->
+<nav class="sitenav" aria-label="サイト内メニュー">
+  <div class="wrap">
+    <a class="brand" href="index.html">音感トレーニング</a>
+    <ul>
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="howto.html">使い方</a></li>
+      <li><a href="about.html">作った人</a></li>
+      <li><a href="news.html">お知らせ</a></li>
+      <li><a href="contact.html" class="on">お問い合わせ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="pagehero">
+  <div class="wrap">
+    <span class="label">Contact</span>
+    <h1>お問い合わせ</h1>
+    <p class="sub">アプリの感想、質問、「使ってみたい」など、お気軽にどうぞ。返信が必要な場合はメールアドレスをご記入ください。</p>
+  </div>
+</header>
+
+<main>
+<section class="after-pagehero">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Form</span>
+      <h2>フォームから送る</h2>
+      <p class="muted">送信内容は制作者だけが読み、返信以外の目的には使いません。送り先の仕組み（Google Apps Script）は <a href="about.html#making">作り方</a> のページに書いています。</p>
+
+      <!-- 送信先は js/main.js の CONTACT_URL（Apps Script のウェブアプリURL） -->
+      <form id="contact-form" class="cform" novalidate>
+        <label>お名前（ニックネーム可）
+          <input type="text" name="name" maxlength="80" autocomplete="name" placeholder="例：キヨ">
+        </label>
+        <label>メールアドレス（返信が必要な場合）
+          <input type="email" name="email" maxlength="120" autocomplete="email" inputmode="email" placeholder="例：you@example.com">
+        </label>
+        <label>内容 <span class="req">必須</span>
+          <textarea name="message" rows="7" maxlength="3000" required placeholder="ご質問・ご感想など"></textarea>
+        </label>
+        <!-- 人には見えない欄。ここに何か入っていたら自動送信（迷惑ボット）とみなして捨てる -->
+        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="row">
+          <button type="submit" class="btn primary">送信する</button>
+          <span class="muted" id="form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<!-- ============ 共通フッター ============ -->
+<footer>
+  <div class="wrap">
+    <p>© 2026 音感トレーニング — アドリブへの耳をつくる</p>
+    <p>このサイトは、自作アプリの紹介と「Webページを作って公開する」練習を兼ねて制作しました。<a href="about.html#making">作り方はこちら</a>。</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

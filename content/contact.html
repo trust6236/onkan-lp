@@ -1,0 +1,41 @@
+title: お問い合わせ
+description: 音感トレーニングについてのご質問・ご感想はこちらから。
+
+<header class="pagehero">
+  <div class="wrap">
+    <span class="label">Contact</span>
+    <h1>お問い合わせ</h1>
+    <p class="sub">アプリの感想、質問、「使ってみたい」など、お気軽にどうぞ。返信が必要な場合はメールアドレスをご記入ください。</p>
+  </div>
+</header>
+
+<main>
+<section class="after-pagehero">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Form</span>
+      <h2>フォームから送る</h2>
+      <p class="muted">送信内容は制作者だけが読み、返信以外の目的には使いません。送り先の仕組み（Google Apps Script）は <a href="about.html#making">作り方</a> のページに書いています。</p>
+
+      <!-- 送信先は js/main.js の CONTACT_URL（Apps Script のウェブアプリURL） -->
+      <form id="contact-form" class="cform" novalidate>
+        <label>お名前（ニックネーム可）
+          <input type="text" name="name" maxlength="80" autocomplete="name" placeholder="例：キヨ">
+        </label>
+        <label>メールアドレス（返信が必要な場合）
+          <input type="email" name="email" maxlength="120" autocomplete="email" inputmode="email" placeholder="例：you@example.com">
+        </label>
+        <label>内容 <span class="req">必須</span>
+          <textarea name="message" rows="7" maxlength="3000" required placeholder="ご質問・ご感想など"></textarea>
+        </label>
+        <!-- 人には見えない欄。ここに何か入っていたら自動送信（迷惑ボット）とみなして捨てる -->
+        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="row">
+          <button type="submit" class="btn primary">送信する</button>
+          <span class="muted" id="form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  全ページ共通の「枠」（テンプレート）。
+  {{…}} の部分に build.py が各ページの中身を差し込んで docs/ に書き出します。
+  ここを1か所直せば、全ページのヘッダー・フッターが一度に変わります。
+-->
+<title>音感トレーニング — アドリブへの耳をつくる｜自作アプリ紹介</title>
+<meta name="description" content="音程（インターバル）を聴き分ける耳を、ジャズピアノの即興演奏につなげる練習アプリ「音感トレーニング」の紹介ページ。なぜ音程がアドリブの土台なのかを、文字と音で確かめられます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="音感トレーニング — アドリブへの耳をつくる｜自作アプリ紹介">
+<meta property="og:description" content="音程（インターバル）を聴き分ける耳を、ジャズピアノの即興演奏につなげる練習アプリ「音感トレーニング」の紹介ページ。なぜ音程がアドリブの土台なのかを、文字と音で確かめられます。">
+<meta property="og:site_name" content="音感トレーニング">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://trust6236.github.io/onkan-lp/">
+<meta property="og:image" content="https://trust6236.github.io/onkan-lp/images/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://trust6236.github.io/onkan-lp/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,650&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ 共通ヘッダー（サイト名＋ページ一覧） ============ -->
+<nav class="sitenav" aria-label="サイト内メニュー">
+  <div class="wrap">
+    <a class="brand" href="index.html">音感トレーニング</a>
+    <ul>
+      <li><a href="index.html" class="on">トップ</a></li>
+      <li><a href="howto.html">使い方</a></li>
+      <li><a href="about.html">作った人</a></li>
+      <li><a href="news.html">お知らせ</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!--
+  ============================================================
+  トップページ（LP）の中身。全ページ共通の枠（ヘッダー・フッター）は
+  templates/base.html にあり、build.py がこの中身をそこへ差し込みます。
+
+  LPは、上から順に「読ませる順番」でセクションを並べた1枚のページ：
+   ① ヒーロー     … 最初の3秒で「何のページか」と「一言」を伝える
+   ② 短い答え     … いちばん言いたいことを3行で
+   ③ 理由         … なぜそれが大事か（納得させる）
+   ④ 手順         … だから、こう進める（具体化）
+   ⑤ 体験         … 実際に音で確かめる（このページの独自性）
+   ⑥ 特徴         … アプリのウリを4点
+   ⑦ 画面         … 実物の見た目
+   ⑧ 制作の話     … 誰が・なぜ作ったか（信頼）
+   ⑨ CTA          … 最後にもう一度、行動をうながす
+   （フッターは共通枠側）
+  ============================================================
+-->
+<!-- ============ ① ヒーロー：最初の3秒で伝える ============ -->
+<header class="hero">
+  <div class="deco"></div>
+  <div class="wrap">
+    <span class="label">自作アプリ紹介 ／ 音感トレーニング</span>
+    <h1>頭の中で鳴らせない音は、<br>弾けない。</h1>
+    <p class="sub">「音感トレーニング」は、音程（インターバル）を聴き分ける耳を、<b>ジャズピアノの即興演奏</b>につなげるための練習アプリです。ただの音当てクイズにしないために、「なぜ音程なのか」の理屈を機能の中心に置きました。</p>
+    <div class="row">
+      <a class="btn primary" href="#demo">▶ 音で確かめる</a>
+      <a class="btn onpanel" href="#why">なぜ音程なのか</a>
+    </div>
+    <div class="hero-shot">
+      <img src="images/app-home.webp" alt="音感トレーニングのホーム画面。アドリブができるまでの地図が表示されている" width="1400" height="933">
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ② 短い答え：いちばん言いたいこと ============ -->
+<section class="after-hero">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">The short answer</span>
+      <h2>いちばん短い答え</h2>
+      <p class="big">アドリブとは「頭に鳴った音を、その場で鍵盤に出すこと」です。<br>
+      その途中で <span class="hl">「今の音は、このコードの何度か」</span> という翻訳が必ず入ります。<br>
+      音程トレーニングは、その翻訳そのものを速くする練習です。</p>
+      <p class="muted">音程当てはゴールではなく、地図のステップ1。このアプリは、その先の道のりまで見えるように作ってあります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ 理由：なぜそれが大事か ============ -->
+<section id="why">
+  <div class="wrap">
+    <span class="eyebrow">Why intervals</span>
+    <h2>なぜ「音程」がアドリブの土台なのか</h2>
+    <p class="lead">理由は5つ。どれもジャズピアノの即興に直結します。</p>
+    <div class="reasons">
+      <div class="reason"><div class="num">1</div><div>
+        <h3>ジャズは「音の名前」ではなく「距離」で動いている</h3>
+        <p>同じ形のフレーズが、キーを変えて何度も出てきます。II-V-I は12キーすべてで登場します。「ドレミ」で覚えるとキーごとに覚え直し。<b>「1度・3度・5度」という距離</b>で覚えれば、1つ覚えた形がそのまま12キーで使えます。</p>
+      </div></div>
+      <div class="reason"><div class="num">2</div><div>
+        <h3>コードの正体は、音程の組み合わせ</h3>
+        <p>3度が長いか短いかでメジャー／マイナー、7度が長いか短いかで maj7／7。Cmaj7 と C7 の違いは「シ」と「シ♭」の1音＝<b>長7度と短7度の差</b>です。この3rdと7thは<b>ガイドトーン</b>と呼ばれ、ジャズの命綱です。</p>
+      </div></div>
+      <div class="reason"><div class="num">3</div><div>
+        <h3>「解決したい力」の正体はトライトーン</h3>
+        <p>G7 の中の「シ」と「ファ」は増4度。この落ち着かない響きが、Cへ解決したがる推進力を生みます。トライトーンを耳で捕まえられると、<b>コード進行が耳で見える</b>ようになります。</p>
+      </div></div>
+      <div class="reason"><div class="num">4</div><div>
+        <h3>耳コピの速度が、そのまま語彙の量になる</h3>
+        <p>アドリブは無から湧くものではなく、<b>貯めたフレーズの組み替え</b>。フレーズは耳コピで貯まり、耳コピの速さは音程を聴き取る速さでほぼ決まります。</p>
+      </div></div>
+      <div class="reason"><div class="num">5</div><div>
+        <h3>頭の中で鳴らせない音は、弾けない</h3>
+        <p>音程が分かる＝頭の中の音に<b>名前がつく</b>＝鍵盤の場所に変換できる、ということ。「歌えるものは弾ける」と言われるのは、この変換ができている状態を指しています。</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ④ 手順：だから、この順番で ============ -->
+<section id="levels">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Levels</span>
+      <h2>だから、この順番で練習します</h2>
+      <p class="lead">レベルは難しさの順ではなく、<b>ジャズで意味のある順</b>に並べてあります。1回10問・3分ほど。</p>
+      <ol class="steps">
+        <li data-n="1"><b>骨組み</b><span>8度・5度・4度 … コードの土台と、4度進行の感覚</span></li>
+        <li data-n="2"><b>明暗</b><span>長3度・短3度 … メジャー／マイナーの分かれ目</span></li>
+        <li data-n="3" class="hot"><b>ガイドトーン</b><span>7度を追加 … maj7／7／m7 の判別。ここがジャズの命綱</span></li>
+        <li data-n="4"><b>緊張</b><span>トライトーンを追加 … ドミナントの正体</span></li>
+        <li data-n="5"><b>色</b><span>2度・6度を追加 … 9th・13th などのテンション</span></li>
+        <li data-n="6"><b>実戦</b><span>12の音程すべて</span></li>
+        <li data-n="7" class="hot"><b>コードの上で「何度か」</b><span>Lv7・8 … コードを鳴らしたあとの1音が、ルートから見て何度かを当てる。アドリブに直結する発展モード</span></li>
+        <li data-n="9" class="hot"><b>フレーズ聴き取り</b><span>Lv9・10 … 3〜4音のフレーズを、度数の順に書き取る＝耳コピの縮図</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑤ 体験：音で確かめる（このページの独自性） ============ -->
+<section id="demo">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Listen</span>
+      <h2>耳で確かめる</h2>
+      <p class="lead">上で説明したことを、文字ではなく音で確かめてください。アプリに入っているデモをそのまま置いてあります。<br>ボタンを押して、<b>何が動いたか</b>に耳を向けてみてください。</p>
+      <p class="note">🔈 音が出ます。ピアノの音は音源ファイルではなく、その場で計算して作っています（詳しくは下の「特徴」へ）。</p>
+      <div id="demo-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑥ 特徴：ウリを4点 ============ -->
+<section id="features">
+  <div class="wrap">
+    <span class="eyebrow">Features</span>
+    <h2>アプリの特徴</h2>
+    <p class="lead">「鳴ればいい」では通らない人が作ったので、音にはこだわりました。</p>
+    <div class="feats">
+      <div class="feat"><div class="k">01</div><h3>ピアノの音は、その場で合成</h3><p>音源ファイルはゼロ。倍音を少しずつ高くずらし（弦の硬さ）、高い倍音ほど速く消し、弦2本をわずかにずらして重ね、打鍵の音と部屋の響きまで計算で作っています。最初の版は「音がしょぼい」の一言で作り直しになりました。</p></div>
+      <div class="feat"><div class="k">02</div><h3>HTMLファイル1枚で動く</h3><p>ダブルクリックで起動。インストール不要、ネット不要。データはすべてブラウザの中に保存されます。</p></div>
+      <div class="feat"><div class="k">03</div><h3>理屈と音がセット</h3><p>「なぜ音程なのか」の5つの理由に、それを音で確かめるデモ7本を対応させています。読む→聴く→当てる、の順で腹落ちします。</p></div>
+      <div class="feat"><div class="k">04</div><h3>記録が残る</h3><p>音程ごとの正答率と、コード上の度数当ての成績を記録。苦手な音程が一目で分かります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑦ 画面：実物の見た目 ============ -->
+<section id="screens">
+  <div class="wrap">
+    <span class="eyebrow">Screens</span>
+    <h2>画面</h2>
+    <p class="lead">落ち着いた配色で、毎日3分ひらいても疲れないように。</p>
+    <div class="shots">
+      <figure class="shot wide"><img src="images/app-why.webp" alt="「なぜ音程なのか」の画面" width="1400" height="933" loading="lazy"><figcaption>「なぜ音程なのか」── 5つの理由をひとつずつ。</figcaption></figure>
+      <figure class="shot"><img src="images/app-train.webp" alt="トレーニング（Lv3 ガイドトーン）の出題画面" width="1400" height="653" loading="lazy"><figcaption>トレーニング ── 鳴った2音の距離を選ぶ。「もう一度」「ゆっくり」も。</figcaption></figure>
+      <figure class="shot"><img src="images/app-zukan.webp" alt="音程図鑑の画面" width="1400" height="653" loading="lazy"><figcaption>音程図鑑 ── 12の音程を、鍵盤の絵と一緒に一覧で。</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑧ 制作の話：誰が、なぜ ============ -->
+<section id="story">
+  <div class="wrap">
+    <div class="card story">
+      <span class="eyebrow">Behind the app</span>
+      <h2>作った経緯</h2>
+      <p>音程当てのアプリは、世の中にたくさんあります。でも「なぜそれがアドリブの土台になるのか」を教えてくれるものが見つかりませんでした。</p>
+      <p class="q">音程当てを、地図のステップ1として見せる。<br>解説を、おまけではなく機能の中心に置く。</p>
+      <p>そう決めて、ジャズピアノを習っている社会人（設計と検収）と、AI秘書のClaude Code（コード書き）の二人三脚で作りました。レッスンで習ってきたことを「なぜ音程か」の理屈にまとめ直し、それを音で裏づけるデモを添え、最後にレベルの順番を決めています。</p>
+      <p>このページ自体も、同じ二人三脚で「Webページを作って公開するまで」を練習するために作ったものです。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ⑨ CTA：最後にもう一度、行動をうながす ============ -->
+<section class="cta">
+  <div class="wrap">
+    <h2>アドリブへの耳は、1日10問・3分から。</h2>
+    <p>まずは、3rdの半音ひとつで明暗が変わるのを、耳で確かめてみてください。</p>
+    <div class="row">
+      <a class="btn primary" href="#demo">▶ もう一度、音で確かめる</a>
+      <a class="btn onpanel" href="#why">理由を読み直す</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 共通フッター ============ -->
+<footer>
+  <div class="wrap">
+    <p>© 2026 音感トレーニング — アドリブへの耳をつくる</p>
+    <p>このサイトは、自作アプリの紹介と「Webページを作って公開する」練習を兼ねて制作しました。<a href="about.html#making">作り方はこちら</a>。</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

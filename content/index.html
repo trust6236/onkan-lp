@@ -1,15 +1,12 @@
-<!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+title: 音感トレーニング — アドリブへの耳をつくる｜自作アプリ紹介
+description: 音程（インターバル）を聴き分ける耳を、ジャズピアノの即興演奏につなげる練習アプリ「音感トレーニング」の紹介ページ。なぜ音程がアドリブの土台なのかを、文字と音で確かめられます。
+
 <!--
   ============================================================
-  このファイルの読み方（LPの構造メモ）
-  ------------------------------------------------------------
-  LP（ランディングページ）は、上から順に「読ませる順番」で
-  セクションを並べた1枚のページです。このページの並び：
+  トップページ（LP）の中身。全ページ共通の枠（ヘッダー・フッター）は
+  templates/base.html にあり、build.py がこの中身をそこへ差し込みます。
 
+  LPは、上から順に「読ませる順番」でセクションを並べた1枚のページ：
    ① ヒーロー     … 最初の3秒で「何のページか」と「一言」を伝える
    ② 短い答え     … いちばん言いたいことを3行で
    ③ 理由         … なぜそれが大事か（納得させる）
@@ -19,39 +16,9 @@
    ⑦ 画面         … 実物の見た目
    ⑧ 制作の話     … 誰が・なぜ作ったか（信頼）
    ⑨ CTA          … 最後にもう一度、行動をうながす
-   ⑩ フッター     … 権利表示・小さな注記
-
-  第2版から、役割ごとにファイルを分けています：
-    index.html   … 中身（何を書くか）        ← このファイル
-    css/style.css… 見た目（色・余白・文字）  ← <head> で読み込み
-    js/main.js   … 動き（音を鳴らす）        ← </body> の直前で読み込み
-    images/      … 画像
-    favicon.svg  … タブに出る小さなアイコン
-  「中身・見た目・動き」を分けるのが Web の基本構造です。
+   （フッターは共通枠側）
   ============================================================
 -->
-<title>音感トレーニング — アドリブへの耳をつくる｜自作アプリ紹介</title>
-<meta name="description" content="音程（インターバル）を聴き分ける耳を、ジャズピアノの即興演奏につなげる練習アプリ「音感トレーニング」の紹介ページ。なぜ音程がアドリブの土台なのかを、文字と音で確かめられます。">
-<!-- OGP：LINEやX（Twitter）でURLを共有したときに出るタイトル・説明・画像。og:url と og:image は絶対URL（https://〜）でないと効かない -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="音感トレーニング — アドリブへの耳をつくる">
-<meta property="og:description" content="音程を聴き分ける耳を、ジャズピアノの即興演奏につなげる練習アプリの紹介。なぜ音程がアドリブの土台なのかを、文字と音で。">
-<meta property="og:site_name" content="音感トレーニング">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://trust6236.github.io/onkan-lp/">
-<meta property="og:image" content="https://trust6236.github.io/onkan-lp/images/ogp.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://trust6236.github.io/onkan-lp/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,650&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
 <!-- ============ ① ヒーロー：最初の3秒で伝える ============ -->
 <header class="hero">
   <div class="deco"></div>
@@ -206,13 +173,3 @@
     </div>
   </div>
 </section>
-
-<!-- ============ ⑩ フッター ============ -->
-<footer>
-  © 2026 音感トレーニング — アドリブへの耳をつくる<br>
-  このページは、自作アプリの紹介と「Webページを作って公開する」練習を兼ねて制作しました。
-</footer>
-
-<script src="js/main.js"></script>
-</body>
-</html>

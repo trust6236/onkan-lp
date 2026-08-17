@@ -1,0 +1,328 @@
+/* 音感トレーニング紹介サイト — 見た目の定義（全ページ共通。templates/base.html から読み込まれる） */
+  /* ---------- 色と寸法は全部ここで決める（直接カラーコードを書かない） ---------- */
+  :root{
+    --paper: #faf7f2;          /* 背景：うすいクリーム */
+    --card: #ffffff;
+    --card-raised: #fbf8f3;
+    --ink: #2a2622;            /* 文字：黒に近い茶グレー */
+    --ink-soft: #6b6259;
+    --ink-faint: #a39a8f;
+    --line: #e6ded2;
+    --line-soft: #efe9df;
+    --accent: #b5622a;         /* 差し色：テラコッタ（アプリと同じ） */
+    --accent-strong: #944e20;
+    --accent-soft: #f6e9de;
+    --panel: #3f2818;          /* 濃い面：焦げ茶 */
+    --panel-ink: #ffffff;
+    --shadow: 0 1px 2px rgba(40,25,10,0.05), 0 10px 28px rgba(40,25,10,0.07);
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --serif: "Fraunces", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans:  "Manrope", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper: #171513;
+      --card: #211e1b;
+      --card-raised: #26221e;
+      --ink: #efe9e1;
+      --ink-soft: #a99e92;
+      --ink-faint: #6f665d;
+      --line: #39332d;
+      --line-soft: #2c2723;
+      --accent: #e08a4a;
+      --accent-strong: #f0a262;
+      --accent-soft: #3a2a1f;
+      --panel: #2a1a10;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 28px rgba(0,0,0,0.4);
+    }
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection{ background: var(--accent-soft); }
+  a{ color: var(--accent); }
+  p{ margin: 0 0 12px; }
+
+  /* ページ幅は760px。狭すぎると文字が折り返して安っぽく見える */
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* 見出しと数字はセリフ体、本文はサンセリフ。この対比が「ちゃんとした感」を作る */
+  h1, h2, h3, .num{ font-family: var(--serif); font-optical-sizing: auto; letter-spacing: -0.005em; }
+  h1, h2{ word-break: auto-phrase; }   /* 日本語を文節で折り返す（対応ブラウザのみ） */
+  h2{ font-size: 26px; font-weight: 560; margin: 0 0 8px; line-height: 1.35; text-wrap: balance; }
+  h3{ font-size: 17px; font-weight: 650; margin: 0 0 4px; line-height: 1.5; }
+  .eyebrow{
+    display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  .lead{ color: var(--ink-soft); font-size: 15.5px; margin-bottom: 18px; }
+  .muted{ color: var(--ink-soft); font-size: 14px; }
+  .num{ font-variant-numeric: tabular-nums; }
+
+  /* ---------- ボタン（主ボタンだけ差し色。それ以外は控えめ） ---------- */
+  .btn{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    padding: 12px 20px; border-radius: var(--radius-md);
+    border: 1.5px solid var(--line); background: var(--card); color: var(--ink);
+    text-decoration: none; cursor: pointer; box-shadow: var(--shadow);
+    transition: transform .15s ease, border-color .15s ease, background .15s ease, opacity .15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary{ background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover{ background: var(--accent-strong); border-color: var(--accent-strong); }
+  .btn.onpanel{ background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.35); color: #fff; box-shadow: none; }
+  .btn.onpanel:hover{ background: rgba(255,255,255,0.18); border-color: #fff; }
+  .btn.small{ font-size: 13.5px; padding: 8px 14px; }
+  .btn.playing{ opacity: .75; cursor: default; }
+  .row{ display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+  /* ---------- カード ---------- */
+  .card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 24px 24px 20px;
+    margin-bottom: 20px;
+    position: relative;                 /* 濃い面に重ねたとき、カードが手前に来るように */
+  }
+  section{ padding: 34px 0 6px; }
+
+  /* ---------- 共通ヘッダー：サイト名＋ページ一覧（全ページに出る。templates/base.html） ---------- */
+  .sitenav{ background: var(--panel); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .sitenav .wrap{ display: flex; align-items: center; gap: 16px; min-height: 54px; }
+  .sitenav .brand{
+    font-family: var(--serif); font-size: 17px; font-weight: 560; letter-spacing: .01em;
+    color: #fff; text-decoration: none; white-space: nowrap;
+  }
+  .sitenav ul{ display: flex; gap: 2px; list-style: none; margin: 0 0 0 auto; padding: 0; overflow-x: auto; scrollbar-width: none; }
+  .sitenav ul::-webkit-scrollbar{ display: none; }
+  .sitenav a{
+    display: block; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 600;
+    padding: 8px 11px; border-radius: 8px; white-space: nowrap;
+    transition: background .15s ease, color .15s ease;
+  }
+  .sitenav a:hover{ background: rgba(255,255,255,0.10); color: #fff; }
+  .sitenav a.on{ color: #fff; background: rgba(255,255,255,0.14); }
+
+  /* ---------- 下層ページの見出し面（濃い面に見出し → 最初のカードを重ねる） ---------- */
+  .pagehero{
+    position: relative; overflow: hidden;
+    background: var(--panel); color: var(--panel-ink);
+    padding: 34px 0 64px;
+  }
+  .pagehero::after{
+    content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); top: -80px; right: -60px; pointer-events: none;
+  }
+  .pagehero .wrap{ position: relative; }
+  .pagehero h1{ font-size: 32px; font-weight: 560; line-height: 1.3; margin: 0 0 10px; color: var(--panel-ink); text-wrap: balance; }
+  .pagehero .sub{ font-size: 16px; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0; }
+  .after-pagehero{ padding-top: 0; }
+  .after-pagehero .card:first-child{ margin-top: -34px; }   /* この重なりが全体を締める */
+  .card ul, .card ol:not(.steps){ padding-left: 1.3em; margin: 0 0 10px; }
+  .card li{ margin-bottom: 7px; font-size: 15px; }
+  .card ol:not(.steps) li{ margin-bottom: 10px; }
+
+  /* ---------- お知らせ（日付＋内容） ---------- */
+  .news{ margin: 0; }
+  .news dt{ font-family: var(--serif); font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 650; margin-top: 14px; }
+  .news dt:first-child{ margin-top: 4px; }
+  .news dd{ margin: 2px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+  .news dd:last-child{ border-bottom: none; padding-bottom: 4px; }
+
+  /* ---------- お問い合わせフォーム ---------- */
+  .cform label{ display: block; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); margin: 0 0 14px; }
+  .cform .req{ display: inline-block; font-size: 11px; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 7px; margin-left: 6px; vertical-align: 1px; }
+  .cform input, .cform textarea{
+    display: block; width: 100%; margin-top: 6px;
+    font-family: inherit; font-size: 15px; color: var(--ink);
+    padding: 11px 12px; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+    background: var(--card-raised); transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .cform textarea{ resize: vertical; min-height: 140px; line-height: 1.7; }
+  .cform input::placeholder, .cform textarea::placeholder{ color: var(--ink-faint); }
+  .cform input:hover, .cform textarea:hover{ border-color: var(--ink-faint); }
+  .cform input:focus, .cform textarea:focus{ outline: none; border-color: var(--accent); background: var(--card); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .cform .hp{ position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .cform button:disabled{ opacity: .6; cursor: default; transform: none; }
+  #form-status{ font-size: 14px; }
+  #form-status.ok{ color: var(--accent); font-weight: 600; }
+
+  /* ---------- ① ヒーロー：濃い面。右上の白丸で奥行き ---------- */
+  .hero{
+    position: relative;                 /* overflow は隠さない（下の画像をはみ出させるため） */
+    background: var(--panel); color: var(--panel-ink);
+    padding: 30px 0 0;
+  }
+  .hero .deco{                          /* 白丸だけをこの層で切り抜く */
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .hero .deco::after{
+    content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); top: -90px; right: -70px;
+  }
+  .hero .wrap{ position: relative; }
+  .hero .label, .pagehero .label{
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px; padding: 3px 12px; margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: 40px; font-weight: 560; line-height: 1.25; margin: 0 0 14px;
+    color: var(--panel-ink); text-wrap: balance;
+  }
+  .hero .sub{ font-size: 16.5px; color: rgba(255,255,255,0.82); max-width: 600px; margin-bottom: 24px; }
+  .hero .sub b{ color: #fff; }
+  /* 画面の絵を面の下端からはみ出させて、次の白い部分に重ねる（この「重なり」が全体を締める） */
+  .hero-shot{
+    display: block; margin: 36px auto -110px; width: 100%; max-width: 720px;
+    border-radius: 14px; border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    background: #fff;
+  }
+  .hero-shot img{ display: block; width: 100%; height: auto; border-radius: 14px; }
+  .after-hero{ padding-top: 150px; }
+
+  /* ---------- ② 短い答え ---------- */
+  .big{ font-size: 19px; font-weight: 700; line-height: 1.7; margin: 0 0 8px; }
+  .hl{ background: linear-gradient(transparent 62%, var(--accent-soft) 62%); }
+
+  /* ---------- ③ 理由：番号はセリフの大きい数字 ---------- */
+  .reasons{ display: grid; gap: 14px; }
+  .reason{
+    display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow); padding: 20px 22px 16px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .reason:hover{ transform: translateY(-2px); border-color: var(--accent); }
+  .reason .num{ font-size: 34px; font-weight: 450; color: var(--accent); line-height: 1; padding-top: 4px; }
+  .reason p{ margin: 0; color: var(--ink-soft); font-size: 15px; }
+  .reason p b{ color: var(--ink); }
+
+  /* ---------- ④ 手順：縦の階段 ---------- */
+  .steps{ list-style: none; margin: 8px 0 0; padding: 0; }
+  .steps li{
+    position: relative; padding: 0 0 18px 48px; font-size: 15px;
+  }
+  .steps li::before{
+    content: attr(data-n); position: absolute; left: 0; top: 0;
+    width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--line);
+    background: var(--card); color: var(--ink-soft);
+    font-family: var(--serif); font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .steps li::after{
+    content: ""; position: absolute; left: 15.5px; top: 34px; bottom: 2px; width: 1.5px; background: var(--line);
+  }
+  .steps li:last-child::after{ display: none; }
+  .steps li.hot::before{ background: var(--accent); border-color: var(--accent); color: #fff; }
+  .steps b{ display: block; font-size: 15.5px; }
+  .steps span{ color: var(--ink-soft); font-size: 14px; }
+
+  /* ---------- ⑤ 体験：デモの一覧 ---------- */
+  .demo{ padding: 18px 0 16px; border-top: 1px solid var(--line-soft); }
+  .demo:first-of-type{ border-top: none; padding-top: 6px; }
+  .demo h3{ margin-bottom: 2px; }
+  .demo .s{ font-size: 13px; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+  .demo .d{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 12px; }
+  .demo .d b{ color: var(--ink); }
+  .note{
+    font-size: 13px; color: var(--ink-soft); background: var(--card-raised);
+    border: 1px dashed var(--line); border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 8px;
+  }
+
+  /* ---------- ⑥ 特徴：2列（スマホでは1列） ---------- */
+  .feats{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .feat{
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow); padding: 20px 20px 16px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .feat:hover{ transform: translateY(-2px); border-color: var(--accent); }
+  .feat .k{ font-family: var(--serif); font-size: 12px; letter-spacing: .1em; color: var(--accent); font-weight: 650; }
+  .feat h3{ margin: 4px 0 6px; }
+  .feat p{ margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---------- ⑦ 画面 ---------- */
+  .shots{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .shot{ margin: 0; }
+  .shot img{
+    display: block; width: 100%; height: auto; border-radius: var(--radius-md);
+    border: 1px solid var(--line); box-shadow: var(--shadow); background: #fff;
+  }
+  .shot figcaption{ font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+  .shot.wide{ grid-column: 1 / -1; }
+  .shot.phone{ max-width: 300px; margin: 0 auto; }
+
+  /* ---------- ⑧ 制作の話 ---------- */
+  .story p{ font-size: 15px; }
+  .story .q{
+    border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; margin: 14px 0;
+    color: var(--ink); font-family: var(--serif); font-size: 17px; font-weight: 450; line-height: 1.7;
+  }
+
+  /* ---------- ⑨ CTA：もう一度、濃い面 ---------- */
+  .cta{
+    position: relative; overflow: hidden; margin-top: 30px;
+    background: var(--panel); color: var(--panel-ink); text-align: center; padding: 56px 0 60px;
+  }
+  .cta::after{
+    content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); bottom: -110px; left: -60px; pointer-events: none;
+  }
+  .cta h2{ color: #fff; font-size: 30px; margin-bottom: 8px; }
+  .cta p{ color: rgba(255,255,255,0.8); margin-bottom: 22px; }
+  .cta .row{ justify-content: center; }
+
+  /* ---------- 共通フッター ---------- */
+  footer{ text-align: center; padding: 28px 0 40px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.9; }
+  footer p{ margin: 0 0 2px; }
+  footer a{ color: var(--ink-soft); }
+
+  /* ---------- スマホ ---------- */
+  @media (max-width: 640px){
+    .sitenav .wrap{ gap: 10px; position: relative; }
+    .sitenav .wrap::after{               /* メニューが右に続いていることを示すフェード */
+      content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 34px;
+      background: linear-gradient(to right, transparent, var(--panel)); pointer-events: none;
+    }
+    .sitenav ul{ padding-right: 24px; }
+    .sitenav .brand{ font-size: 15.5px; }
+    .sitenav a{ font-size: 13px; padding: 8px 9px; }
+    .pagehero{ padding: 26px 0 56px; }
+    .pagehero h1{ font-size: 25px; }
+    .pagehero .sub{ font-size: 15px; }
+    .hero{ padding-top: 26px; }
+    .hero h1{ font-size: 28px; }
+    .hero h1 br{ display: none; }      /* スマホでは自然に折り返させる */
+    .hero .sub{ font-size: 15px; }
+    .hero-shot{ margin-bottom: -70px; }
+    .after-hero{ padding-top: 90px; }
+    h2{ font-size: 22px; }
+    .card{ padding: 20px 18px 16px; }
+    .feats, .shots{ grid-template-columns: 1fr; }
+    .reason{ grid-template-columns: 40px 1fr; padding: 16px 16px 14px; }
+    .reason .num{ font-size: 28px; }
+    .cta h2{ font-size: 24px; }
+  }
+  /* 動きが苦手な人には動かさない */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ transition: none !important; }
+    .btn:hover, .reason:hover, .feat:hover{ transform: none; }
+  }

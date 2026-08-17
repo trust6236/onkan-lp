@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- タブに出る小さなアイコン。テラコッタの角丸に白い八分音符 -->
+  <rect width="64" height="64" rx="14" fill="#b5622a"/>
+  <g fill="#fff">
+    <ellipse cx="25" cy="45" rx="9.5" ry="7" transform="rotate(-18 25 45)"/>
+    <rect x="31.5" y="14" width="3.6" height="31" rx="1.2"/>
+    <path d="M35 14 c1.5 6 9 8.5 11.5 15 c1 3 .2 6.5 -1.6 9 c1.2 -5.5 -2 -8.5 -6.2 -11.5 c-1.6 -1.2 -3 -2.4 -3.7 -3.8 z"/>
+  </g>
+</svg>

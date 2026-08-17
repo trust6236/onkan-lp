@@ -1,0 +1,50 @@
+title: 作った人と、作り方
+description: 音感トレーニングを作った人と作り方。ジャズピアノを習う社会人と、AI秘書（Claude Code）の二人三脚。この紹介サイト自体の作り方（LP→無料で仮公開→GitHub Pages→静的サイト生成）も。
+
+<header class="pagehero">
+  <div class="wrap">
+    <span class="label">About</span>
+    <h1>作った人と、作り方</h1>
+    <p class="sub">ジャズピアノを習っている社会人と、AI秘書のClaude Code。設計と検収は人、コードは秘書。</p>
+  </div>
+</header>
+
+<main>
+<section class="after-pagehero">
+  <div class="wrap">
+
+    <div class="card">
+      <span class="eyebrow">Who</span>
+      <h2>作った人</h2>
+      <p>ジャズピアノを習っている社会人です。目標は即興演奏（アドリブ）。レッスンで「音程を聴き分ける耳が土台」と教わって音程当てのアプリを探しましたが、「なぜそれがアドリブにつながるのか」まで教えてくれるものが見つかりませんでした。それなら自分の言葉で作ろう、と。</p>
+      <p>プログラミングは専門ではありません。<b>AI秘書（Claude Code）に「こう作って」と頼み、できたものを自分の耳と目で検収する</b>、を繰り返して作りました。</p>
+    </div>
+
+    <div class="card">
+      <span class="eyebrow">How</span>
+      <h2>アプリの作り方</h2>
+      <ol>
+        <li><b>まず理屈を一文にした。</b>「アドリブ＝頭に鳴った音を、その場で鍵盤に出すこと。途中で『このコードの何度か』という翻訳が入る。音程トレーニングは、その翻訳を速くする練習」。この一文が設計図です。</li>
+        <li><b>レベルの順番を、ジャズで意味のある順に決めた。</b>難しさ順ではなく、骨組み→明暗→ガイドトーン→緊張→色→実戦→コード上の度数→フレーズ聴き取り。</li>
+        <li><b>音にこだわった。</b>最初のピアノ音は正弦波の足し算で、「音がしょぼい」の一言で却下。倍音のずれ・弦2本のゆらぎ・打鍵音・残響まで計算で作り直しました。音源ファイルはありません。</li>
+        <li><b>1枚のHTMLにした。</b>ダブルクリックで動き、データはブラウザの中。配るのも動かすのも軽い。</li>
+      </ol>
+    </div>
+
+    <div class="card" id="making">
+      <span class="eyebrow">Making of this site</span>
+      <h2>このサイトの作り方</h2>
+      <p>このサイト自体も、「Webページを作って世界に公開するまで」を体験するために、同じ二人三脚で作りました。3段階です。</p>
+      <ol class="steps">
+        <li data-n="1"><b>1枚のLPを作って、無料で仮公開</b><span>構成案を3つ出して1つ選ぶ → PCとスマホで検収 → Netlify Drop にフォルダを渡すだけでURLが出た（1時間で消える練習用）</span></li>
+        <li data-n="2"><b>GitHub Pages で本公開</b><span>1枚のHTMLを「中身（HTML）・見た目（CSS）・動き（JS）」に分割。git で管理し、GitHub に送る（push）と自動で公開される。「直す → 送る → 反映」が更新の基本形</span></li>
+        <li data-n="3" class="hot"><b>複数ページに育てる</b><span>ページが増えると共通のヘッダー・フッターの管理が面倒になる → 「共通の枠」と「各ページの中身」を分け、小さなPythonスクリプト（build.py）で組み立てる。これが静的サイトジェネレーターの正体</span></li>
+      </ol>
+      <p><b>お問い合わせフォームの受け口</b>は、サーバーの代わりに Google Apps Script（Googleの無料の小さなプログラム置き場）で作りました。送られた内容はスプレッドシートに溜まり、制作者にメールで知らせが届きます。静的サイト（ただのファイルの束）でも、こうすれば「受け付ける」ことができます。</p>
+      <p class="muted">使った道具：HTML／CSS／JavaScript（Web Audio API）、Python、git、GitHub Pages、Google Apps Script、Google Fonts（Fraunces・Manrope）。有料のものはありません。</p>
+      <p class="muted">元データと組み立てスクリプトは <a href="https://github.com/trust6236/onkan-lp">GitHub</a> で見られます。</p>
+    </div>
+
+  </div>
+</section>
+</main>
